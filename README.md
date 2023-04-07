@@ -2,6 +2,8 @@
 
 This is a small weather forecast app that lets you search for a city and displays the current weather as well as a 5-day forecast. The app also saves your search history and lets you click on any cities you previously searched for to bring up updated weather data.
 
+The app can be found here: https://eschindev.github.io/weather-planner/
+
 ## Technologies Used
 
 - HTML
