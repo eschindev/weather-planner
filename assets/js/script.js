@@ -39,7 +39,7 @@ function getCurrent(lat, lon) {
             console.log("getCurrent")
             console.log(data);
 
-            //currentDayOutput.clear();
+            currentDayOutput.addClass("current-day-class")
             var currentDayHeader = $("<h2>").text(`${data.name} on ${dayjs().format("M/D/YYYY")}`);
             currentDayOutput.append(currentDayHeader);
             var iconCode = data.weather[0].icon;

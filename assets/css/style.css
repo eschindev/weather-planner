@@ -14,7 +14,7 @@ ul {
     border-radius: 5px;
 }
 
-#current-day-output {
+.current-day-class {
     background-color: beige;
     border: 2px solid grey;
     border-radius: 10px;
