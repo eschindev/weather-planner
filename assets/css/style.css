@@ -1,3 +1,29 @@
-#current-city-col {
-    border-width: 2px
+#city-search-btn {
+    width: auto
+}
+
+ul {
+    list-style: none
+}
+
+.forecast-box {
+    background-color: darkslategray;
+    color: whitesmoke;
+    margin: 5px;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+.forecast-box li {
+    font-size: 10px;
+    margin-left: -10px;
+}
+
+h4 {
+    font-size: 20px;
+    text-align: center;
+}
+
+button {
+    display: block;
 }

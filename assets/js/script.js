@@ -1,10 +1,12 @@
 var API_KEY = "b435488a41da2efd3cc26695a12e36f3";
 
+var searchArea = $('#search-area');
 var citySearchBtn = $('#city-search-button');
 var citySearchBox = $('#city-search-box');
 var currentDayOutput = $('#current-day-output');
 var fiveDayHeader = $('#five-day-header');
 var fiveDayForecast = $('#five-day-forecast');
+var searchHistory = $('#search-history')
 
 
 
@@ -18,6 +20,9 @@ function getCoords(city) {
         .then(function(data) {
             console.log("getCoords");
             console.log(data);
+            currentDayOutput.empty();
+            fiveDayForecast.empty();
+            buttonsFromLS();
             getCurrent(data[0].lat, data[0].lon);
             getFiveDay(data[0].lat, data[0].lon);
         })
@@ -34,6 +39,7 @@ function getCurrent(lat, lon) {
             console.log("getCurrent")
             console.log(data);
 
+            //currentDayOutput.clear();
             var currentDayHeader = $("<h2>").text(`${data.name} on ${dayjs().format("M/D/YYYY")}`);
             currentDayOutput.append(currentDayHeader);
 
@@ -58,13 +64,14 @@ function getFiveDay(lat, lon) {
         .then(function(data) {
             console.log("getFiveDay");
             console.log(data);
+
             //generate 5-day forecast header
             var fdh = $("<h2>").text("5-Day Forecast:")
-            fiveDayHeader.append(fdh);
+            fiveDayHeader.html(fdh);
             for(i = 3; i < data.list.length; i += 8) {
                 console.log(data.list[i].dt);
                 var forecastBox = $("<div>").addClass("forecast-box col-2");
-                var forecastHeader = $("<h3>").addClass("forecast-header").text(dayjs.unix(data.list[i].dt).format("M/D/YY"))
+                var forecastHeader = $("<h4>").addClass("forecast-header").text(dayjs.unix(data.list[i].dt).format("M/D/YY"))
                 forecastBox.append(forecastHeader);
                 var forecastList = $("<ul>");
                 var forecastTemp = $("<li>").html(`Temp: ${data.list[i].main.temp}&deg;F`);
@@ -78,8 +85,29 @@ function getFiveDay(lat, lon) {
         })
 }
 
-function searchCity(city) {
+function searchCity(event) {
+    event.preventDefault();
 
+    if (event.target.id === "city-search-btn"){
+        var city = citySearchBox.val();
+        if (!localStorage.getItem(city)) {
+            localStorage.setItem(city, city);
+        }
+    } else {
+        var city = event.target.textContent;
+    }
+
+    getCoords(city);
 }
 
-getCoords("San Francisco");
+function buttonsFromLS() {
+    searchHistory.empty();
+    for (i = 0; i < localStorage.length; i++) {
+        var histButton = $("<button>").addClass("custom-btn my-1").text(localStorage.key(i));
+        searchHistory.append(histButton);
+    }
+}
+
+buttonsFromLS();
+
+searchArea.on("click", ".custom-btn", searchCity);
