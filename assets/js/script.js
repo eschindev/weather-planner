@@ -72,7 +72,7 @@ function getFiveDay(lat, lon) {
                 var forecastHeader = $("<h4>").addClass("forecast-header").text(dayjs.unix(data.list[i].dt).format("M/D/YY"))
                 forecastBox.append(forecastHeader);
                 var iconCode = data.list[i].weather[0].icon;
-                var icon = $("<img>").attr("src", `http://openweathermap.org/img/w/${iconCode}.png`)
+                var icon = $("<img>").attr("src", `https://openweathermap.org/img/w/${iconCode}.png`)
                 forecastBox.append(icon);
                 var forecastTemp = $("<p>").html(`Temp: ${data.list[i].main.temp}&deg;F`);
                 var forecastWind = $("<p>").text(`Wind: ${data.list[i].wind.speed}mph`);
