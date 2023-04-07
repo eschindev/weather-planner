@@ -42,15 +42,13 @@ function getCurrent(lat, lon) {
             //currentDayOutput.clear();
             var currentDayHeader = $("<h2>").text(`${data.name} on ${dayjs().format("M/D/YYYY")}`);
             currentDayOutput.append(currentDayHeader);
-
-            var currentDayList = $("<ul>")
-            var currentTemp = $("<li>").html(`Temp: ${data.main.temp}&deg;F`);
-            var currentWind = $("<li>").text(`Wind: ${data.wind.speed}mph`);
-            var currentHum = $("<li>").text(`Humidity: ${data.main.humidity}%`);
-            currentDayList.append(currentTemp);
-            currentDayList.append(currentWind);
-            currentDayList.append(currentHum);
-            currentDayOutput.append(currentDayList);
+            var iconCode = data.weather[0].icon;
+            var icon = $("<img>").attr("src", `http://openweathermap.org/img/w/${iconCode}.png`)
+            currentDayOutput.append(icon);
+            var currentTemp = $("<p>").html(`Temp: ${data.main.temp}&deg;F`);
+            var currentWind = $("<p>").text(`Wind: ${data.wind.speed}mph`);
+            var currentHum = $("<p>").text(`Humidity: ${data.main.humidity}%`);
+            currentDayOutput.append(currentTemp, currentWind, currentHum);
         })
 }
 
@@ -73,12 +71,13 @@ function getFiveDay(lat, lon) {
                 var forecastBox = $("<div>").addClass("forecast-box col-2");
                 var forecastHeader = $("<h4>").addClass("forecast-header").text(dayjs.unix(data.list[i].dt).format("M/D/YY"))
                 forecastBox.append(forecastHeader);
-                var forecastList = $("<ul>");
-                var forecastTemp = $("<li>").html(`Temp: ${data.list[i].main.temp}&deg;F`);
-                var forecastWind = $("<li>").text(`Wind: ${data.list[i].wind.speed}mph`);
-                var forecastHum = $("<li>").text(`Humidity: ${data.list[i].main.humidity}%`);
-                forecastList.append(forecastTemp, forecastWind, forecastHum);
-                forecastBox.append(forecastList);
+                var iconCode = data.list[i].weather[0].icon;
+                var icon = $("<img>").attr("src", `http://openweathermap.org/img/w/${iconCode}.png`)
+                forecastBox.append(icon);
+                var forecastTemp = $("<p>").html(`Temp: ${data.list[i].main.temp}&deg;F`);
+                var forecastWind = $("<p>").text(`Wind: ${data.list[i].wind.speed}mph`);
+                var forecastHum = $("<p>").text(`Humidity: ${data.list[i].main.humidity}%`);
+                forecastBox.append(forecastTemp, forecastWind, forecastHum);
                 fiveDayForecast.append(forecastBox);
             }
             

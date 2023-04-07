@@ -14,9 +14,18 @@ ul {
     border-radius: 5px;
 }
 
+#current-day-output {
+    background-color: beige;
+    border: 2px solid grey;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
 .forecast-box li {
     font-size: 10px;
     margin-left: -10px;
+    padding: 5px;
 }
 
 h4 {
@@ -26,4 +35,8 @@ h4 {
 
 button {
     display: block;
+}
+
+img {   
+    margin: auto;
 }
