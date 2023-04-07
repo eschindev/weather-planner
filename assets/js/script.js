@@ -11,7 +11,7 @@ var searchHistory = $('#search-history')
 
 
 function getCoords(city) {
-    var requestUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${API_KEY}`;
+    var requestUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${API_KEY}`;
 
     fetch(requestUrl)
         .then(function(response) {
@@ -86,9 +86,12 @@ function getFiveDay(lat, lon) {
 
 function searchCity(event) {
     event.preventDefault();
-
     if (event.target.id === "city-search-btn"){
         var city = citySearchBox.val();
+        if (city === "") {
+            window.alert("Please enter a city before searching.");
+            return;
+        }
         if (!localStorage.getItem(city)) {
             localStorage.setItem(city, city);
         }
@@ -109,4 +112,4 @@ function buttonsFromLS() {
 
 buttonsFromLS();
 
-searchArea.on("click", ".custom-btn", searchCity);
+searchArea.on("click submit", ".custom-btn", searchCity);
