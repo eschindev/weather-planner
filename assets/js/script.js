@@ -43,7 +43,7 @@ function getCurrent(lat, lon) {
             var currentDayHeader = $("<h2>").text(`${data.name} on ${dayjs().format("M/D/YYYY")}`);
             currentDayOutput.append(currentDayHeader);
             var iconCode = data.weather[0].icon;
-            var icon = $("<img>").attr("src", `http://openweathermap.org/img/w/${iconCode}.png`)
+            var icon = $("<img>").attr("src", `https://openweathermap.org/img/w/${iconCode}.png`)
             currentDayOutput.append(icon);
             var currentTemp = $("<p>").html(`Temp: ${data.main.temp}&deg;F`);
             var currentWind = $("<p>").text(`Wind: ${data.wind.speed}mph`);
