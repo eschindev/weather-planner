@@ -21,50 +21,50 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./Assets/css/style.css" />
-    <script rel="script" src="./Assets/js/script.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js"
     integrity="sha256-iu/zLUB+QgISXBLCW/mcDi/rnf4m4uEDO0wauy76x7U="
     crossorigin="anonymous" defer></script>
+    <script rel="script" src="./Assets/js/script.js" defer></script>
     <title>Weather Planner</title>
   </head>
 
   <body>
     <header class="p-5 mb-2">
       <h1 class="display-3">Weather Planner</h1>
-      <p class="lead">A simple weather app for planning a trip</p>
-      <p id="currentDay" class="lead"></p>
+      <p class="lead">Control the Weather</p>
     </header>
     <div id="appArea" class="container-fluid px-5">
       <div id="app-row" class="row">
         <div id="search-col" class="col-3">
           <h2>Search for a City:</h2>
           <form id="search-form">
-            <input type="text" id="city-search-box" placeholder="San Francisco"/>
-            <input type="submit" value="Search" />
+            <input id="city-search-box" class="my-1" type="text" placeholder="San Francisco"/>
+            <input id="city-search-btn" class="my-1" type="submit" value="Search" />
           </form>
         </div>
         <div id="output-col" class="col-9">
           <div id="current-day-row" class="row">
             <div id="current-day-output" class="col-12">
               <!-- dynamically generate this content -->
-              <h2 id="current-day-header">Current City on current date</h2>
+              <!-- <h2 id="current-day-header">Current City on current date</h2>
               <ul id="current-day-list">
                 <li>Temp: <span id="current-temp"></span></li>
                 <li>Wind: <span id="current-wind"></span></li>
                 <li>Humidity: <span id="current-humidity"></span></li>
-              </ul>
+              </ul> -->
             </div>
-            <div id="5-day-forecast" class="row">
+            <div id="five-day-header"></div>
+            <div id="five-day-forecast" class="row">
               <!-- dymamically generate this content -->
-              <div id="day-1" class="col-2">
+              <!-- <div id="day-1" class="col-2">
                 <h3 id="day-1-date"></h3>
                 <ul>
                   <li>Temp: <span id="day-1-temp"></span></li>
                   <li>Wind: <span id="day-1-wind"></span></li>
                   <li>Humidity: <span id="day-1-humidity"></span></li>
                 </ul>
-              </div>
+              </div> -->
             </div>
           </div>
         </div>
